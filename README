@@ -1,0 +1,23 @@
+Kindly run the "make" command in terminal to compile all the programs.
+
+Sockets:
+The two participating processes act as a server and a client.
+Kindly first run the command 
+"./Server" to start the server. Then run the command "./Client" in a different terminal to start the sending of 
+string packets from client to server. We see that the strings are passed in groups of 5 and then the highest ID
+is recieved back so that the next packet is transmitted.
+
+
+
+FIFO:
+
+P1 and P2 are the two participating processes.
+Kindly run the "./P2_Fifo" command first and then "./P1_Fifo" in a different terminal. In a FIFO, if file is open only at one place, it blocks the process. So in the program P1 first I have opened the fifo only to read the index (if sent by P2)
+and then closed it. Then I open the file again for writing where I send the 5 strings. 
+Simultaneously I open the fifo in P2 for reading what was written by P1. Then we write the highest index.
+This continues till we reach the end of the array.
+
+
+Message Queue:
+Here too, the participating processes are P1 and P2.
+Kindly run the command "./P2_MsgQ" and then run "./P1_MsgQ" in a different terminal. A similar mechanism is used to send the strings. But here, the message is sent in the form of a struct of message which has two parameters. I have used two queues - one to send from P1 to P2, other one to send P2 to P1. The functionality of P1 and P2 is same as the programs above.
